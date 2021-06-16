@@ -26,7 +26,16 @@ check_and_replace()
 print('Number of missing values in the AGE column after the clean up:')
 print(data['B003_01'].isnull().sum())
 
-#creates firstwave; secondwave; thirdwave filtering by wave field
+# creates firstwave; secondwave; thirdwave filtering by wave field
 firstwave = data.loc[data['wave'] == 1]
 secondwave = data.loc[data['wave'] == 2]
 thirdwave = data.loc[data['wave'] == 3]
+
+# Merge firstwave with secondwave
+firstandsecond = pd.concat([firstwave,secondwave],axis=0)
+print (firstandsecond.info())
+
+
+#Iterate over rows
+for index, row in data.iterrows():
+     print('The contributor number ', index, '  lives in ', row['B001'])
