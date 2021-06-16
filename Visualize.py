@@ -25,6 +25,12 @@ thirdwave = data.loc[data['wave'] == 3]
 # plt.show()
 
 #Seaborn catplot 'where do you live' by wave
+# sns.catplot(y='B001', col="wave", data=data, order = data['B001'].value_counts().index, kind="count")
+# plt.show()
 
-sns.catplot(y='B001', col="wave", data=data, order = data['B001'].value_counts().index, kind="count")
-plt.show()
+# Seaborn hexbin plot: life satisfaction and happiness
+# joint_kws=dict(gridsize=7) #the higher, the smaller the bins
+# sns.jointplot(x="C002_01", y="C001_01", data=data, kind="hex", space=0, joint_kws=joint_kws, marginal_ticks=True, marginal_kws=dict(bins=10))
+# plt.xlabel('Happiness')
+# plt.ylabel('Life Satisfaction')
+# plt.show()
