@@ -59,13 +59,33 @@ data['C007_05'] = data['C007_05'].fillna(data['C007_05'].mean())
 
 # Create calculated field ('Trust in institutions')
 data['trust'] = data.C007_01 + data.C007_02 + data.C007_03 + data.C007_03 + data.C007_04 + data.C007_05
-# print(data['trust'])
+
+# Replace missing values in C005_01, C005_02, C005_03, C005_04, C005_05 (WHO-5 index) with mean
+data['C005_01'] = data['C005_01'].fillna(data['C005_01'].mean())
+data['C005_02'] = data['C005_02'].fillna(data['C005_02'].mean())
+data['C005_03'] = data['C005_03'].fillna(data['C005_03'].mean())
+data['C005_04'] = data['C005_04'].fillna(data['C005_04'].mean())
+data['C005_05'] = data['C005_05'].fillna(data['C005_05'].mean())
+
+# Create calculated field ('WHO-5 index')
+data['who5'] = data.C005_01 + data.C005_02 + data.C005_03 + data.C005_03 + data.C005_04 + data.C005_05
+
+
 
 # Scatter trust vs age
-# Sample 1000 lines to avoid overplotting
+# Sample 5000 lines to avoid overplotting
+# data_sample = data.sample(5000)
+# plt.plot('B003_01', 'trust', "", data=data_sample, linestyle='', marker='o', markersize=5, alpha=0.09,  color="purple")
+# plt.xlabel('Age')
+# plt.ylabel('Trust')
+# plt.title('Trust in institutions vs Age', loc='left')
+# plt.show()
+
+# Scatter trust vs wh05
+# Sample 5000 lines to avoid overplotting
 data_sample = data.sample(5000)
-plt.plot('B003_01', 'trust', "", data=data_sample, linestyle='', marker='o', markersize=5, alpha=0.09,  color="purple")
-plt.xlabel('Value of X')
-plt.ylabel('Value of Y')
-plt.title('Overplotting? Try to reduce the dot size', loc='left')
+plt.plot('who5', 'trust', "", data=data_sample, linestyle='', marker='o', markersize=10, alpha=0.09,  color="purple")
+plt.xlabel('who5')
+plt.ylabel('Trust')
+plt.title('Trust in institutions vs WHO5 index', loc='left')
 plt.show()
