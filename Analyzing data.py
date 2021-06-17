@@ -26,6 +26,8 @@ check_and_replace()
 print('Number of missing values in the AGE column after the clean up:')
 print(data['B003_01'].isnull().sum())
 
+
+
 # creates firstwave; secondwave; thirdwave filtering by wave field
 firstwave = data.loc[data['wave'] == 1]
 secondwave = data.loc[data['wave'] == 2]
