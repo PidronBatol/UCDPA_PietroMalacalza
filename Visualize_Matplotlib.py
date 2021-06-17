@@ -67,7 +67,7 @@ data['C005_03'] = data['C005_03'].fillna(data['C005_03'].mean())
 data['C005_04'] = data['C005_04'].fillna(data['C005_04'].mean())
 data['C005_05'] = data['C005_05'].fillna(data['C005_05'].mean())
 
-# Create calculated field ('WHO-5 index')
+# Create calculated field ('WHO-5 Well-Being Index')
 data['who5'] = data.C005_01 + data.C005_02 + data.C005_03 + data.C005_03 + data.C005_04 + data.C005_05
 
 
@@ -87,5 +87,7 @@ data_sample = data.sample(5000)
 plt.plot('who5', 'trust', "", data=data_sample, linestyle='', marker='o', markersize=10, alpha=0.09,  color="purple")
 plt.xlabel('who5')
 plt.ylabel('Trust')
-plt.title('Trust in institutions vs WHO5 index', loc='left')
+plt.title('Trust in institutions vs WHO5 well being index', loc='left')
 plt.show()
+
+
