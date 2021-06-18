@@ -14,7 +14,7 @@ firstwave = data.loc[data['wave'] == 1]
 secondwave = data.loc[data['wave'] == 2]
 thirdwave = data.loc[data['wave'] == 3]
 
-#Seaborn graph 'Country of origin of the contributions' sorted. All waves
+#G4 Seaborn graph 'Country of origin of the contributions' sorted. All waves
 def graphsize():
     sns.set(rc={"figure.figsize":(12, 5)})
 graphsize()
@@ -24,11 +24,11 @@ plt.xlabel('n. of contributions')
 plt.ylabel('Country')
 plt.show()
 
-# Seaborn catplot 'where do you live' by wave
+#G5 Seaborn catplot 'where do you live' by wave
 sns.catplot(y='B001', col="wave", data=data, order = data['B001'].value_counts().index, kind="count")
 plt.show()
 
-# Seaborn hexbin plot: life satisfaction and happiness
+#G6 Seaborn hexbin plot: life satisfaction and happiness
 joint_kws=dict(gridsize=7) #the higher, the smaller the bins
 sns.jointplot(x="C002_01", y="C001_01", data=data, kind="hex", space=0, joint_kws=joint_kws, marginal_ticks=True, marginal_kws=dict(bins=10))
 plt.xlabel('Happiness')
@@ -54,7 +54,7 @@ data['C005_05'] = data['C005_05'].fillna(data['C005_05'].mean())
 
 # Create calculated field ('WHO-5 Well-Being Index')
 data['who5'] = data.C005_01 + data.C005_02 + data.C005_03 + data.C005_03 + data.C005_04 + data.C005_05
-# Seaborn hexbin plot: life satisfaction and happiness
+# G7 Seaborn hexbin plot: life satisfaction and happiness
 joint_kws=dict(gridsize=10) #the higher, the smaller the bins
 sns.jointplot(x="who5", y="trust", data=data, kind="hex", space=0, joint_kws=joint_kws, marginal_ticks=True, marginal_kws=dict(bins=10))
 plt.xlabel('WHO5 Well-Being Index ')
