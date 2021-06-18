@@ -13,20 +13,14 @@ firstwave = data.loc[data['wave'] == 1]
 secondwave = data.loc[data['wave'] == 2]
 thirdwave = data.loc[data['wave'] == 3]
 
-# Age of the respondents
+# G1 Age of the respondents
 binsr = np.arange(0, 101, 20)
-data[['B003_01']].plot(kind='hist', bins=binsr, rwidth=0.8, legend=False, title='Age of the respondents')
+data[['B003_01']].plot(kind='hist', bins=binsr, rwidth=0.8, legend=False, title='G1 Age of the respondents')
 plt.show()
 
-# Happiness and Satisfaction first wave on same graph
-plt.hist(firstwave[['C002_01']], color='red', bins=range(0,12), alpha=0.8)
-plt.hist(firstwave[['C001_01']], color='blue', bins=range(0,12), alpha=0.8)
-plt.title('Happiness and Satis first wave')
-plt.xlabel('Happiness and Satis')
-plt.ylabel('count')
-plt.show()
 
-# Evolution of Life Satisfaction across survey waves
+
+# G2 Evolution of Life Satisfaction across survey waves
 ax = data.hist(column='C001_01', by='wave', bins=10, grid=False, figsize=(8,10), layout=(3,1), sharex=True, zorder=2, rwidth=0.9)
 for i,x in enumerate(ax):
     x.tick_params(axis="both", which="both", bottom="off", top="off", labelbottom="on", left="off", right="off", labelleft="on")
@@ -38,7 +32,7 @@ for i,x in enumerate(ax):
         x.set_ylabel("Contributions", labelpad=50, weight='bold', size=12)
 plt.show()
 
-# Life satisfaction by gender
+# G3 Life satisfaction by gender
 ax = data.hist(column='C001_01', by='B002', bins=10, grid=False, figsize=(8,10), layout=(3,1), sharex=True, zorder=2, rwidth=0.9)
 for i,x in enumerate(ax):
     x.tick_params(axis="both", which="both", bottom="off", top="off", labelbottom="on", left="off", right="off", labelleft="on")
@@ -72,7 +66,7 @@ data['who5'] = data.C005_01 + data.C005_02 + data.C005_03 + data.C005_03 + data.
 
 
 
-# Scatter trust vs age
+# G4 Scatter trust vs age
 # Sample 5000 lines to avoid overplotting
 data_sample = data.sample(5000)
 plt.plot('B003_01', 'trust', "", data=data_sample, linestyle='', marker='o', markersize=5, alpha=0.09,  color="purple")
@@ -81,7 +75,7 @@ plt.ylabel('Trust')
 plt.title('Trust in institutions vs Age', loc='left')
 plt.show()
 
-# Scatter trust vs wh05
+# G5 Scatter trust vs wh05
 # Sample 5000 lines to avoid overplotting
 data_sample = data.sample(5000)
 plt.plot('who5', 'trust', "", data=data_sample, linestyle='', marker='o', markersize=10, alpha=0.09,  color="purple")

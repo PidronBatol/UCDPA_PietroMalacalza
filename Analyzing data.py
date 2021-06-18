@@ -5,15 +5,15 @@ import pandas as pd
 filename = 'ESurvey.csv'
 data = pd.read_csv((filename), low_memory=False)
 
-# Group summary of happiness (mean) by country and gender
+# T2 Group summary of happiness (mean) by country and gender
 happynessbycountry = data.groupby(['B001', 'B002'])['C002_01'].mean().round(2)
 pd.set_option('display.max_rows', None)
-print('Happiness by country (scale of 1 to 10) and gender')
+print('T2 Happiness by country (scale of 1 to 10) and gender')
 print(happynessbycountry)
 
-# Happiest country (ascending order)
+# T1 Happiest country (ascending order)
 happiestcountry = data.groupby(['B001'])['C002_01'].mean().sort_values(ascending=False).round(2)
-print('Country happiness during Covid time')
+print('T1 Country happiness during Covid time')
 print(happiestcountry)
 
 
@@ -39,5 +39,5 @@ print (firstandsecond.info())
 
 
 #Iterate over rows
-for index, row in data.iterrows():
-     print('The contributor number ', index, '  lives in ', row['B001'])
+# for index, row in data.iterrows():
+#      print('The contributor number ', index, '  lives in ', row['B001'])

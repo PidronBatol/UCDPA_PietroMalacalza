@@ -14,7 +14,7 @@ check_and_replace()
 print('Number of missing values in the AGE column after the clean up:')
 print(data['B003_01'].isnull().sum())
 
-# Convert dataframe into NumPy array and print shape (138629 lines and 440 columns) and type; print the ninth column (country)
+# Convert dataframe into NumPy array and print shape (138629 lines and 135 columns) and type; print the ninth column (country)
 arr = data.to_numpy()
 print(arr.shape)
 print(type(arr))
